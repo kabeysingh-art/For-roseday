@@ -3,199 +3,258 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rose Day ❤️</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<title>Happy Rose Day ❤️</title>
 
 <style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Georgia',serif}
 body{
-  margin:0;
-  font-family:'Poppins',sans-serif;
-  background:linear-gradient(180deg,#ffe3ec,#fff);
+  background:radial-gradient(circle at top,#2b0015,#000);
+  color:#fff;
   overflow:hidden;
   text-align:center;
 }
+
+/* COMMON */
 .page{
   display:none;
-  min-height:100vh;
-  padding:20px;
-}
-.active{display:flex;flex-direction:column;justify-content:center;align-items:center}
-
-h1{
-  font-family:'Great Vibes',cursive;
-  color:#ff4f7b;
-  font-size:48px;
-}
-p{font-size:16px;color:#5a2a3a}
-
-button{
-  margin-top:20px;
-  padding:14px 32px;
-  border:none;
-  border-radius:40px;
-  background:#ff4f7b;
-  color:white;
-  font-size:16px;
-  cursor:pointer;
-}
-
-/* Hearts */
-.heart{
-  position:fixed;
-  bottom:-20px;
-  color:#ff6f91;
-  animation:float 7s linear infinite;
-}
-@keyframes float{
-  to{transform:translateY(-120vh);opacity:0}
-}
-
-/* Heart opening */
-.heart-box{
-  width:200px;height:200px;
-  background:#ff4f7b;
-  border-radius:50%;
-  display:flex;
+  position:absolute;
+  inset:0;
   justify-content:center;
   align-items:center;
+  flex-direction:column;
+  padding:20px;
+}
+.active{display:flex}
+button{
+  padding:14px 28px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(45deg,#ff3366,#ff99aa);
+  color:#000;
+  font-size:18px;
   cursor:pointer;
+  margin-top:25px;
+  transition:.3s;
 }
-.heart-box img{
-  width:0;
-  transition:1s;
-}
-.open img{width:120px}
+button:hover{transform:scale(1.08)}
 
-/* Game */
-.flower{
-  width:110px;
+/* MAGIC HEARTS */
+.heart{
   position:absolute;
-  cursor:pointer;
+  color:pink;
+  animation:float 6s linear infinite;
+  opacity:.6;
+}
+@keyframes float{
+  from{transform:translateY(100vh) scale(.5)}
+  to{transform:translateY(-10vh) scale(1.2)}
 }
 
-/* Letter */
-.letter{
-  background:#fff;
-  padding:25px;
-  max-width:320px;
-  border-radius:12px;
-  box-shadow:0 10px 30px rgba(0,0,0,.2);
+/* PAGE 1 */
+#p1 h1{
+  font-size:38px;
+  text-shadow:0 0 15px pink;
 }
-.photos img{
+#p1 img{
+  width:120px;
+  border-radius:15px;
+  margin:10px;
+  box-shadow:0 0 20px rgba(255,105,180,.5);
+}
+
+/* PAGE 2 HEART */
+#p2{
+  background:#000;
+  animation:zoomIn 1.8s ease forwards;
+}
+@keyframes zoomIn{
+  from{transform:scale(.6)}
+  to{transform:scale(1)}
+}
+#bigHeart{
+  font-size:160px;
+  animation:pulse 2s infinite ease-in-out;
+}
+@keyframes pulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.1)}
+}
+#rose{
+  width:180px;
+  margin-top:-30px;
+}
+
+/* PAGE 3 ROSE GAME */
+.rose{
+  position:absolute;
   width:90px;
-  border-radius:10px;
-  margin:6px;
+  cursor:pointer;
+  animation:drift 6s alternate infinite;
+}
+@keyframes drift{
+  from{transform:translateX(-40px)}
+  to{transform:translateX(40px)}
 }
 
-/* Final */
-.final-rose{
-  width:220px;
+/* LETTER */
+#letter{
+  max-width:800px;
+  background:rgba(255,255,255,.1);
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 0 25px pink;
+  font-size:18px;
+  line-height:1.7;
 }
-.fade-love{
-  position:absolute;
-  font-size:80px;
-  color:rgba(255,79,123,.08);
-  font-family:'Great Vibes',cursive;
+.cursor{border-right:2px solid pink}
+
+/* SLIDESHOW */
+#slide{
+  width:75%;
+  max-width:420px;
+  border-radius:20px;
+  box-shadow:0 0 30px pink;
+  animation:zoomPhoto 4s infinite;
+}
+@keyframes zoomPhoto{
+  0%{transform:scale(.7);opacity:0}
+  20%{opacity:1}
+  50%{transform:scale(1)}
+  80%{opacity:1}
+  100%{opacity:0}
 }
 </style>
 </head>
 
 <body>
 
-<script>
-setInterval(()=>{
-  let h=document.createElement("div");
-  h.className="heart";
-  h.innerHTML="❤";
-  h.style.left=Math.random()*100+"vw";
-  h.style.fontSize=(14+Math.random()*20)+"px";
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(),7000);
-},400);
-</script>
-
 <!-- PAGE 1 -->
 <div class="page active" id="p1">
-  <h1>Click here for the special day ❤️</h1>
-  <button onclick="go(2)">Open</button>
+  <h1>If you love me ❤️</h1>
+  <p>Click to open something magical</p>
+  <img src="photo1.jpg"><img src="photo2.jpg">
+  <button onclick="go(2)">Open the special day</button>
 </div>
 
 <!-- PAGE 2 -->
 <div class="page" id="p2">
-  <h1>From my heart…</h1>
-  <div class="heart-box" onclick="openHeart(this)">
-    <img src="flower.jpg">
-  </div>
+  <div id="bigHeart">❤️</div>
+  <img id="rose" src="flower.jpg">
+  <p>Happy Rose Day</p>
+  <button onclick="go(3)">Catch the roses</button>
 </div>
 
-<!-- PAGE 3 -->
+<!-- PAGE 3 GAME -->
 <div class="page" id="p3">
-  <h1>Happy Rose Day 🌹</h1>
-  <p>Catch all the roses</p>
+  <h2>Catch all the roses 🌹</h2>
 </div>
 
-<!-- PAGE 4 -->
+<!-- PAGE 4 LETTER -->
 <div class="page" id="p4">
-  <div class="letter">
-    <p>
-      On 18th August, when I gave you the first rose,  
-      I didn’t know how far this would go.  
-      <br><br>
-      Today, feelings are the same —  
-      the bond is stronger.  
-      <br><br>
-      I want to celebrate every Rose Day with you.
-    </p>
-    <div class="photos">
-      <img src="photo1.jpg">
-      <img src="photo3.jpg">
-      <img src="photo4.jpg">
-    </div>
-  </div>
+  <div id="letter"><span id="text"></span><span class="cursor"></span></div>
   <button onclick="go(5)">Next</button>
 </div>
 
-<!-- PAGE 5 -->
+<!-- PAGE 5 PHOTOS -->
 <div class="page" id="p5">
-  <div class="fade-love">I love you</div>
-  <img src="rose.jpg" class="final-rose">
-  <h1>Happy Rose Day</h1>
-  <p>The first rose I gave you…  
-  and the rose I give you today ❤️</p>
+  <img id="slide" src="photo1.jpg">
+  <h2>Happy Rose Day ❤️</h2>
 </div>
 
 <script>
-let total=4,done=0;
-
+/* PAGE SWITCH */
 function go(n){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.getElementById("p"+n).classList.add('active');
+  document.getElementById('p'+n).classList.add('active');
   if(n===3)startGame();
+  if(n===4)typeLetter();
+  if(n===5)slideShow();
 }
 
-function openHeart(el){
-  el.classList.add("open");
-  setTimeout(()=>go(3),1200);
-}
+/* FLOATING HEARTS */
+setInterval(()=>{
+  const h=document.createElement('div');
+  h.className='heart';
+  h.innerHTML='❤️';
+  h.style.left=Math.random()*100+'vw';
+  h.style.fontSize=Math.random()*20+15+'px';
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
+},500);
 
+/* ROSE GAME */
+let caught=0;
 function startGame(){
-  done=0;
-  for(let i=0;i<total;i++){
-    let f=document.createElement("img");
-    f.src="flower.jpg";
-    f.className="flower";
-    f.style.left=Math.random()*70+"%";
-    f.style.top=Math.random()*60+"%";
-    f.onclick=()=>{
-      f.remove();
-      done++;
-      if(done===total){
-        setTimeout(()=>go(4),700);
-      }
+  caught=0;
+  for(let i=0;i<4;i++){
+    const r=document.createElement('img');
+    r.src='rose.jpg';
+    r.className='rose';
+    r.style.left=Math.random()*80+'%';
+    r.style.top=Math.random()*70+'%';
+    r.onclick=()=>{
+      r.remove(); caught++;
+      if(caught===4)go(4);
     };
-    document.getElementById("p3").appendChild(f);
+    document.getElementById('p3').appendChild(r);
   }
+}
+
+/* LETTER TYPE */
+const letter=`Five months have passed…
+And now we are stepping into the sixth.
+
+Five months ago — on the 17th of August —
+I gave you a rose for the first time.
+
+Today, it is Rose Day again.
+
+If you notice…
+It’s been exactly six months
+since that first rose.
+
+So much has happened in between.
+We fight.
+We fight a lot.
+But we also love… even more.
+
+Every fight, every smile,
+every misunderstanding and every hug
+has only made our bond stronger.
+
+You are like a rose —
+soft, beautiful,
+and strong enough to survive every storm.
+
+I want to keep giving you roses.
+Not just today.
+Not just on Rose Day.
+
+But in every phase of life,
+every year,
+every version of us.
+
+Happy Rose Day ❤️`;
+
+let i=0;
+function typeLetter(){
+  i=0;
+  document.getElementById('text').innerHTML='';
+  const t=setInterval(()=>{
+    document.getElementById('text').innerHTML+=letter[i];
+    i++;
+    if(i>=letter.length)clearInterval(t);
+  },40);
+}
+
+/* SLIDESHOW */
+const photos=['photo1.jpg','photo2.jpg','photo3.jpg','photo4.jpg'];
+let idx=0;
+function slideShow(){
+  setInterval(()=>{
+    document.getElementById('slide').src=photos[idx%photos.length];
+    idx++;
+  },4000);
 }
 </script>
 
